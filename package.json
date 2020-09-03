@@ -1,0 +1,21 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "personal blog",
+  "main": "index.js",
+  "repository": "https://github.com/yzz421/yzz421.github.io",
+  "author": "yzz421",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "deploy": "bash deploy.sh"
+  },
+  "devDependencies": {
+    "@vuepress/theme-blog": "^2.3.2",
+    "vuepress": "^1.5.4"
+  },
+  "dependencies": {
+    "gulp": "^4.0.2"
+  }
+}
