@@ -31,3 +31,5 @@ just
 ```
 ssh username@domain.com 'rm /some/wher/some_file.war'
 ```
+
+:tada::tada::tada:
