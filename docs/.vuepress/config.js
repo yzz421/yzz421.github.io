@@ -1,6 +1,6 @@
 module.exports = {
   title: '宇宙よりも遠い場所',
-  desciprtion: '南极很遥远，但再遥远的地方，都有引力。引力到底是什么？',
+  description: '南极很遥远，但再遥远的地方，都有引力。引力到底是什么？',
   cache: false,
   themeConfig: {
     nav: [
