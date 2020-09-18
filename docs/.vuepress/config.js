@@ -8,10 +8,10 @@ module.exports = {
         text: '首页',
         link: '/',
       },
-      // {
-      //   text: 'Tags',
-      //   link: '/tag/',
-      // },
+      {
+        text: 'Tags',
+        link: '/tag/',
+      },
       {
         text: '关于',
         link: '/about/',
