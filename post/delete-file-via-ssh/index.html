@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Delete a file on remote machine via SSH by using a Shell Script | 宇宙よりも遠い場所</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="南极很遥远，但再遥远的地方，都有引力。引力到底是什么？">
+    <link rel="preload" href="/assets/css/0.styles.330b2520.css" as="style"><link rel="preload" href="/assets/js/app.90b0a68b.js" as="script"><link rel="preload" href="/assets/js/6.fedfe2d3.js" as="script"><link rel="preload" href="/assets/js/1.081fb362.js" as="script"><link rel="preload" href="/assets/js/13.76fd37bb.js" as="script"><link rel="prefetch" href="/assets/js/10.868ce1de.js"><link rel="prefetch" href="/assets/js/11.5521ef69.js"><link rel="prefetch" href="/assets/js/12.d9315903.js"><link rel="prefetch" href="/assets/js/14.4999027f.js"><link rel="prefetch" href="/assets/js/15.2c9fa298.js"><link rel="prefetch" href="/assets/js/4.cb7f94ce.js"><link rel="prefetch" href="/assets/js/5.d159565c.js"><link rel="prefetch" href="/assets/js/7.d5ac6f50.js"><link rel="prefetch" href="/assets/js/8.3f0d3b2a.js"><link rel="prefetch" href="/assets/js/9.0c474134.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.dee3a0cd.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.330b2520.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">宇宙よりも遠い場所</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/tag/" class="nav-link">
+  Tags
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/yzz421/yzz421.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/tag/" class="nav-link">
+  Tags
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/yzz421/yzz421.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <!----> </aside> <main class="page"><div class="content head"><h1 id="Delete a file on remote machine via SSH by using a Shell Script">
+        Delete a file on remote machine via SSH by using a Shell Script
+      </h1> <div class="tag-links">
+  tags:
+  <a href="/tag/#Linux" class="tag">
+    Linux
+  </a><a href="/tag/#Terminal" class="tag">
+    Terminal
+  </a></div></div> <div class="theme-default-content content__default"><p>usually, when i have to delete a file on a remote machine via a Shell Script</p> <p>flow manually:</p> <div class="language- extra-class"><pre class="language-text"><code>ssh username@domain.com
+</code></pre></div><p>...then at domain:</p> <div class="language- extra-class"><pre class="language-text"><code>cd ./some/where
+rm some_file.war
+</code></pre></div><h2 id="but-i-can-pass-the-ssh-clinet-a-command-to-execute-in-place-of-starting-a-shell-by-appending-it-to-ssh-commnad"><a href="#but-i-can-pass-the-ssh-clinet-a-command-to-execute-in-place-of-starting-a-shell-by-appending-it-to-ssh-commnad" class="header-anchor">#</a> but, i can pass the ssh clinet a command to execute in place of starting a shell by appending it to ssh commnad.</h2> <p>just</p> <div class="language- extra-class"><pre class="language-text"><code>ssh username@domain.com 'rm /some/wher/some_file.war'
+</code></pre></div><p>🎉🎉🎉</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">9/4/2020, 3:33:44 PM</span></div></footer> <!----> <footer class="content comment"><!----></footer></main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.90b0a68b.js" defer></script><script src="/assets/js/6.fedfe2d3.js" defer></script><script src="/assets/js/1.081fb362.js" defer></script><script src="/assets/js/13.76fd37bb.js" defer></script>
+  </body>
+</html>
