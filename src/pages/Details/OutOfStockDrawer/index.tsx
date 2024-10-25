@@ -90,7 +90,7 @@ export default () => {
       dataIndex: 'mode',
       title: '库存方式',
       valueType: 'select',
-      valueEnum: { a: { text: '急冻+冷存' } },
+      valueEnum: { '急冻+冷存': { text: '急冻+冷存' } },
       formItemProps: {
         required: true,
         rules: [{
@@ -263,7 +263,8 @@ export default () => {
               weight: toNumber(kucunitem.weight) - toNumber(find.weight),
               quantity: toNumber(kucunitem.quantity) - toNumber(find.quantity),
             });
-          } else {
+          }
+          else if (toNumber(find.weight) === toNumber(kucunitem.weight)) { } else {
             throw new Error('出库重量超出库存！');
           }
         } else {
@@ -283,6 +284,7 @@ export default () => {
       setkucun(newkucun);
       setkucunmingxi([...kucunmingxi, newValue]);
       message.success('出库成功');
+      form.resetFields();
       return true;
     } catch (error) {
       message.error('出库重量超出库存！');

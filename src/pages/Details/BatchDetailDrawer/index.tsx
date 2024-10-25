@@ -144,14 +144,17 @@ export default (props: any) => {
   return (
     <Drawer extra={footer} onClose={onClose} width="90%" title="单据详情" open={open}>
       <ProDescriptions dataSource={data}>
-        <ProDescriptions.Item dataIndex="bizId" label="单号"></ProDescriptions.Item>
+        <ProDescriptions.Item dataIndex="bizId" label="单据号"></ProDescriptions.Item>
         <ProDescriptions.Item dataIndex="bizType" label="业务类型"></ProDescriptions.Item>
         <ProDescriptions.Item dataIndex="bizOwner" label="制单人"></ProDescriptions.Item>
         <ProDescriptions.Item dataIndex="customer" label="客户"></ProDescriptions.Item>
         <ProDescriptions.Item dataIndex="bizDate" label="业务日期"></ProDescriptions.Item>
         <ProDescriptions.Item dataIndex="quantity" label="总数量"></ProDescriptions.Item>
         <ProDescriptions.Item dataIndex="weight" label="总重量（KG）"></ProDescriptions.Item>
-        <ProDescriptions.Item dataIndex="amount" label="总金额" hide={data.bizType === '入库'}></ProDescriptions.Item>
+        {
+          data.bizType !== '入库' ? <ProDescriptions.Item dataIndex="amount" label="总金额"></ProDescriptions.Item> : null
+        }
+
 
         <ProDescriptions.Item dataIndex="desc" label="备注"></ProDescriptions.Item>
       </ProDescriptions>

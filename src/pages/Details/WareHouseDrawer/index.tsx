@@ -121,6 +121,7 @@ export default () => {
       customer: value?.customer,
       batch: batch,
       ...x,
+      days: 1,
     }));
     const newValue: IWareHouse = {
       bizId: value?.bizId,
@@ -143,6 +144,7 @@ export default () => {
     setkucun([...kucun, ...details]);
     await waitTime(1000);
     message.success('入库成功');
+    form.resetFields();
     return true;
   };
 

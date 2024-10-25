@@ -32,7 +32,7 @@ export default () => {
     //   hideInSearch: true,
     // },
   ];
-  console.log(kucun)
+  console.log('kucun', kucun)
   return (
     <PageContainer title="库存总览">
       <ProTable
